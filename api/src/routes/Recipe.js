@@ -8,8 +8,8 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/', async function(req, res, next){
-
-  res.send('Bienvenido sdasdjkh');
+  console.log('paso por aca')
+  return res.send('Bienvenido a las recipe!!!');
 })
 
 module.exports = router;
