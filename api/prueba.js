@@ -12,19 +12,33 @@ const sequelize = new Sequelize(`postgres://postgres:1234@localhost/food`, {
   logging: console.log, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
-console.log(1,sequelize.options.host)
-console.log(2,conn.options.host)
-//console.log(Recipe.findAll({ limit: 10}))
-// async function tryconection() {
-//   try {
-//     await sequelize.authenticate();
-//     console.log('Connection has been established successfully.');
-//   } catch (error) {
-//     console.error('Unable to connect to the database:', error);
-//   }
-// }
+// Diet.create({            // estas tienen que estar definidas
+//   name: 'Vegetarian'
+// });
+// Diet.create({            // estas tienen que estar definidas
+//   name: 'Lacto-Vegetarian'
+// });
+// Diet.create({            // estas tienen que estar definidas
+//   name: 'Ovo-Vegetarian'
+// });
+// Diet.create({            // estas tienen que estar definidas
+//   name: 'Vegan'
+// });  
+//   Diet.create({            // estas tienen que estar definidas
+//   name: 'Pescetarian'
+// });  
+//   Diet.create({            // estas tienen que estar definidas
+//   name: 'Paleo'
+// });  
+//     Diet.create({            // estas tienen que estar definidas
+//   name: 'Primal'
+// });  
+//     Diet.create({            // estas tienen que estar definidas
+//   name: 'Whole30'
+// });  
 
-// tryconection()
-console.log
+arr = ['Vegetarian','Lacto-Vegetarian','Ovo-Vegetarian','Vegan','Pescetarian','Paleo','Primal','Whole30']
 
-
+arr.forEach(element => Diet.findOrCreate({
+  where: { name: element }}
+));

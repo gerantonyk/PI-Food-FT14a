@@ -11,11 +11,11 @@ module.exports = (sequelize) => {
       primaryKey: true,
       //autoIncrement: true
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    plate_summary: {
+    summary: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     steps: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT
     },   
   });
 };

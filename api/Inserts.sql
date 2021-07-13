@@ -15,14 +15,26 @@ insert into recipes values
     where: {},
   })
   Diet.create({            // estas tienen que estar definidas
-    name: 'Celiaca'
+    name: 'Vegetarian'
   });
   Diet.create({            // estas tienen que estar definidas
-    name: 'Vegana'
+    name: 'Lacto-Vegetarian'
   });
   Diet.create({            // estas tienen que estar definidas
-    name: 'Omnivoro'
+    name: 'Ovo-Vegetarian'
   });
   Diet.create({            // estas tienen que estar definidas
-    name: 'Carnivoro'
+    name: 'Vegan'
+  });  
+    Diet.create({            // estas tienen que estar definidas
+    name: 'Pescetarian'
+  });  
+    Diet.create({            // estas tienen que estar definidas
+    name: 'Paleo'
+  });  
+      Diet.create({            // estas tienen que estar definidas
+    name: 'Primal'
+  });  
+      Diet.create({            // estas tienen que estar definidas
+    name: 'Whole30'
   });  

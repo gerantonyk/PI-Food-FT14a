@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { conn,Recipe,Diet } = require('../db');
 require('dotenv').config();
 const { Op } = require("sequelize");
-
+const isUUID = require('is-uuid');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -59,9 +59,10 @@ router.get('/', async function(req, res, next){
 
 router.get('/:id', async function(req, res, next){
   const {id} = req.params
-  console.log(id)
-  const recipe = await Recipe.findByPk(id)
-  console.log(recipe)
-  res.json(recipe);
+  var recipe = null
+  if (isUUID.anyNonNil(id)) recipe =  await Recipe.findByPk(id,{include: Diet});
+  if (recipe) return res.json(recipe);
+  recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`).then(r => r.json())
+  return res.json(recipe);
 })
 module.exports = router;
