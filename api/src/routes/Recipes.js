@@ -14,14 +14,12 @@ const {
 const router = Router();
 
 //para traer los datos de la bd 
-function filterByName(res,recipes,name,lim) {
+function filterByTitle(res,recipes,title,lim) {
 Recipe.findAll({ limit: lim,
-  where:{name:{[Op.like]: `%${name}%`}}  
+  where:{title:{[Op.like]: `%${title}%`}}  
 })
 .then(recipesbd=>{
-  recipesbd= recipesbd.map(r => ({...r.dataValues,origen:'bd'})) 
-  recipes = recipes.concat( recipesbd)   
-  
+  recipes = recipes.concat(recipesbd)   
 })
 .finally(()=>res.json(recipes))
 }
@@ -29,15 +27,15 @@ Recipe.findAll({ limit: lim,
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/', async function(req, res, next){
-  const {name} = req.query
+  const title = req.query.name
   var recipes =[]
   var lim=0
   //primero busco en la api externa
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10`).then(r => r.json())
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`).then(r => r.json())
     .then((result) => {
       recipes= result.results 
       //filtro los resultados para obtener los que contienen el string en name
-      recipes = recipes.filter(r=>r.title.includes(name))
+      recipes = recipes.filter(r=>r.title.includes(title))
       // si no hay 9 resultados busco en la base de datos
       
       const len = recipes.length
@@ -45,14 +43,13 @@ router.get('/', async function(req, res, next){
         recipes = recipes.slice(_,9)
       }
       
-      recipes = recipes.map(r => ({...r,origen:'api'}))
       if (recipes.length === 9) return res.json(recipes)
       if (len<9) {
         lim = (9-len)
-        filterByName(res,recipes,name,lim)
+        filterByTitle(res,recipes,title,lim)
       }  
 
-   }, ()=>{filterByName(res,recipes,name,lim)}
+   }, ()=>{filterByTitle(res,recipes,title,lim)}
    
    )
 })
