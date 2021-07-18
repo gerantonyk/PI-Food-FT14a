@@ -1,6 +1,8 @@
 
-const { conn,Diet } = require('./src/db.js');
+const { conn,Diet,Recipe } = require('./src/db.js');
+const { Op } = require("sequelize");
 require('dotenv').config();
+
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -36,9 +38,18 @@ const sequelize = new Sequelize(`postgres://postgres:1234@localhost/food`, {
 //     Diet.create({            // estas tienen que estar definidas
 //   name: 'Whole30'
 // });  
+var lim= 9
+var title=""
+var filter={}
+if(title) filter={title:{[Op.like]: `%${title}%`}};
+Recipe.findAll({ limit: lim,
+  where:filter  
+,include: Diet,nest:true}).then(r=>console.log(r[1].dataValues.diets[0]))
 
-arr = ['Vegetarian','Lacto-Vegetarian','Ovo-Vegetarian','Vegan','Pescetarian','Paleo','Primal','Whole30']
+//Recipe.findByPk('bdfc91b5-6f2c-4a1f-bcc3-c1f1a22b611d',{include: Diet}).then(r=>console.log(r));
 
-arr.forEach(element => Diet.findOrCreate({
-  where: { name: element }}
-));
+// arr = ['Vegetarian','Lacto-Vegetarian','Ovo-Vegetarian','Vegan','Pescetarian','Paleo','Primal','Whole30']
+
+// arr.forEach(element => Diet.findOrCreate({
+//   where: { name: element }}
+// ));

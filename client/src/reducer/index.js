@@ -1,33 +1,44 @@
 const initialState = {
-  recipes: [
-    // {
-    //   title:"califlawer",
-    //   image:"https://spoonacular.com/recipeImages/716426-312x231.jpg",
-    //   diets: ["Vegetarian","Ovo-Vegetarian","Vegan"]
-    // },
-    // {
-    //   title:"snail stew",
-    //   image:"https://spoonacular.com/recipeImages/716381-312x231.jpg",
-    //   diets:[ "gluten free", "dairy free"]
-    // },
-    // {
-    //   title:"Red Kidney Bean Jambalaya",
-    //   image:"https://spoonacular.com/recipeImages/782601-312x231.jpg",
-    //   diets: ["gluten free", "dairy free", "lacto ovo vegetarian", "vegan"]
-    // }
-  ],
+  recipes: [],
   recipeNameFilter:'',
   recipeDetail: {},
   currentPage:1,
   itemsPerPage:2,
-  recipeOrder:{}
+  recipeOrder:{order:'',dir:''},
+  recipeDiets:[],
+  dietsFilter:[]
 };
 
 
 function reducer(state = initialState, action) {
+  if (action.type === "ADD_DIET_FILTER") {
+    return {
+        ...state,
+        dietsFilter: state.dietsFilter.includes(action.payload)?
+        state.dietsFilter:state.dietsFilter.concat(action.payload)
+    }
+  }
+  if (action.type === "REMOVE_DIET_FILTER") {
+    return {
+        ...state,
+        dietsFilter: state.dietsFilter.filter(diet=> diet !== action.payload)
+    };
+  }   
+  if (action.type === "GET_DIETS") {
 
+    return {
+        ...state,
+        recipeDiets: action.payload
+    };
+  }  
+  if (action.type === "CHANGE_ORDER") {
+    return {
+        ...state,
+        recipeOrder: action.payload
+    };
+  }
   if (action.type === "CHANGE_PAGE") {
-    console.log(state)
+
     return {
         ...state,
         currentPage: action.payload
@@ -40,7 +51,12 @@ function reducer(state = initialState, action) {
     };
   }
   if (action.type === "GET_RECIPES") {
-    console.log("se ejecuto",action.payload)
+    return {
+        ...state,
+        recipes: action.payload
+    };
+  }
+  if (action.type === "SET_RECIPES") {
     return {
         ...state,
         recipes: action.payload

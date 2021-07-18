@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { changePage } from '../actions';
 
 
-export default function Pagination() {
+export default function Pagination({recipes}) {
   const pageNumbers      = []
-  const recipes          = useSelector(state => state.recipes)
+  //const recipes          = useSelector(state => state.recipes)
   const itemsPerPage     = useSelector(state => state.itemsPerPage)
   const dispatch = useDispatch()
   const total = recipes.length
