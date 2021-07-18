@@ -6,7 +6,16 @@ const initialState = {
   itemsPerPage:2,
   recipeOrder:{order:'',dir:''},
   recipeDiets:[],
-  dietsFilter:[]
+  dietsFilter:[],
+  recipeForm:{
+    title:'',
+    summary:'',
+    score:'',
+    healthyness:'',
+    steps:'',
+    image:'',
+    diets:[]
+  }
 };
 
 
@@ -23,7 +32,27 @@ function reducer(state = initialState, action) {
         ...state,
         dietsFilter: state.dietsFilter.filter(diet=> diet !== action.payload)
     };
+  }    
+  if (action.type === "REMOVE_DIET_FORM") {
+    return {
+      ...state,
+      recipeForm:{
+        ...state.recipeForm,
+        diets:state.recipeForm.diets.filter(diet=> diet !== action.payload)
+      }
+    }
   }   
+  if (action.type === "ADD_DIET_FORM") {
+    return {
+      ...state,
+      recipeForm:{
+        ...state.recipeForm,
+        diets:state.recipeForm.diets.includes(action.payload)?
+        state.recipeForm.diets:state.recipeForm.diets.concat(action.payload)
+      }
+    }
+  }
+
   if (action.type === "GET_DIETS") {
 
     return {
@@ -62,12 +91,24 @@ function reducer(state = initialState, action) {
         recipes: action.payload
     };
   }
+  if (action.type === "SET_RECIPE_FORM") {
+    return {
+        ...state,
+        recipeForm: action.payload
+    };
+  }  
   if (action.type === "GET_RECIPE_DETAIL") {
       return {
           ...state,
           recipeDetail: action.payload
       };
   }
+  if (action.type === "POST_RECIPE") {
+    return {
+        ...state,
+        recipeForm: action.payload
+    };
+}
   return state;
 }
 

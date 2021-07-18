@@ -26,10 +26,10 @@ function filterByTitle(res,recipes,title,lim) {
     }
   })
 .then(recipesbd=>{
-  console.log(recipesbd)
+
   recipesbd = recipesbd.map(recipe=>recipe.get({ plain: true }))
   recipesbd.forEach(recipe=>recipe.diets = recipe.diets.map(diet=>diet.name))
-  console.log(recipesbd)
+
   recipes = recipes.concat(recipesbd)   
   
 })
@@ -44,9 +44,9 @@ router.get('/', async function(req, res, next){
   var lim=0
   //primero busco en la api externa
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`).then(r => r.json())
-    .then((result) => {
-      
-      if(result.results){
+    .finally((result) => {
+
+      if(result){
         recipes = result.results;
 
       //reformate los resultados para que quede igual a la bd

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import Recipe from './Recipe';
 import { useDispatch, useSelector } from 'react-redux'
-import { addDietFilter, getRecipesByName,removeDietFilter, setRecipes} from '../actions';
+import { addDietFilter, getRecipesByName,removeDietFilter} from '../actions';
 import Pagination from './Pagination';
 import Order from './Order';
 import DietsCombo from './DietsCombo';
+import { Link } from 'react-router-dom';
 
 export default function Recipes() {
   const dispatch = useDispatch()
@@ -16,22 +17,21 @@ export default function Recipes() {
 
   useEffect(()=>{
     dispatch(getRecipesByName(''))
-  },[])
+  },[dispatch])
   //Filtrando recipes
   var recipes2 = recipes
 
   if (dietsFilter.length){
-    console.log("entra aca")
+
     let len = dietsFilter.length
     let queda
     recipes2= recipes2.filter(r=>{
       queda= true
       let i = 0
       while(i<len && queda===true){
-        console.log(r.diets)
-        console.log(dietsFilter[i])
+
         queda = r.diets.includes(dietsFilter[i])
-        console.log(r.diets.includes(dietsFilter[i]))
+
         i++
       }
       return queda
@@ -72,16 +72,20 @@ export default function Recipes() {
 
   return (
     <div>
-      <DietsCombo onChange={onChangeAddDiet} onClick={onClickRemoveDiet}/>
+      <DietsCombo onChange={onChangeAddDiet} onClick={onClickRemoveDiet} diets={dietsFilter}/>
       <Order/>
       <div className='recipes'>
-        {currentItems.map((r,id) => <Recipe
-            key={id}
-            title={r.title}
-            image = {r.image}
-            diets = {r.diets}
-            score = {r.score}
-          /> )}
+        {currentItems.map((r,id) => 
+          <Link key={id} to={`/recipe/${r.id}`}>
+            <Recipe
+              key={id}
+              title={r.title}
+              image = {r.image}
+              diets = {r.diets}
+              score = {r.score}
+            />
+          </Link> 
+         )}
       </div>
 
       <Pagination recipes={recipes2}/>

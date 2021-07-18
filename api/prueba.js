@@ -38,13 +38,13 @@ const sequelize = new Sequelize(`postgres://postgres:1234@localhost/food`, {
 //     Diet.create({            // estas tienen que estar definidas
 //   name: 'Whole30'
 // });  
-var lim= 9
-var title=""
-var filter={}
-if(title) filter={title:{[Op.like]: `%${title}%`}};
-Recipe.findAll({ limit: lim,
-  where:filter  
-,include: Diet,nest:true}).then(r=>console.log(r[1].dataValues.diets[0]))
+// var lim= 9
+// var title=""
+// var filter={}
+// if(title) filter={title:{[Op.like]: `%${title}%`}};
+// Recipe.findAll({ limit: lim,
+//   where:filter  
+// ,include: Diet,nest:true}).then(r=>console.log(r[1].dataValues.diets[0]))
 
 //Recipe.findByPk('bdfc91b5-6f2c-4a1f-bcc3-c1f1a22b611d',{include: Diet}).then(r=>console.log(r));
 
@@ -53,3 +53,33 @@ Recipe.findAll({ limit: lim,
 // arr.forEach(element => Diet.findOrCreate({
 //   where: { name: element }}
 // ));
+
+const initialState = {
+  recipes: [],
+  recipeNameFilter:'',
+  recipeDetail: {},
+  currentPage:1,
+  itemsPerPage:2,
+  recipeOrder:{order:'',dir:''},
+  recipeDiets:[],
+  dietsFilter:[],
+  recipeForm:{
+    tilte:'Pedro',
+    summary:'sas',
+    score:'99',
+    healthyness:'1',
+    diets:["jorge"]
+  }
+};
+
+
+const pipe = {
+  ...initialState,
+  recipeForm:{
+    ...initialState.recipeForm,
+    diets:[1,2,3,4]
+  }
+}
+  
+;
+console.log(pipe)
