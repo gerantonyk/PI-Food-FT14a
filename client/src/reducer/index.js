@@ -3,7 +3,7 @@ const initialState = {
   recipeNameFilter:'',
   recipeDetail: {},
   currentPage:1,
-  itemsPerPage:2,
+  itemsPerPage:9,
   recipeOrder:{order:'',dir:''},
   recipeDiets:[],
   dietsFilter:[],

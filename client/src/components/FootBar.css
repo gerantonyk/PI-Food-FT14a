@@ -1,0 +1,26 @@
+.footBar {
+    background-color: rgba(41, 41, 41, 0.95);
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    bottom: 0px;   
+    z-index:3
+  }
+  
+  #navbarUl {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    align-items: center;
+    margin: 5px;
+    position: static;
+    flex-wrap: nowrap;
+  }
+  
+
+  
+
+  

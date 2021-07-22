@@ -7,20 +7,14 @@ export default function SearchBar() {
   const recipeNameFilter = useSelector(state => state.recipeNameFilter)
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      //onSearch(city);
-      // dispatch(updateFilter(recipeNameFilter))
-      dispatch(getRecipesByName(recipeNameFilter))
-      //aca va a tener que ir una request al servidor
-    }}>
+
+ 
       <input
         type="text"
-        placeholder="Nombre..."
+        placeholder="Buscar..."
         value={recipeNameFilter}
         onChange={e => dispatch(updateFilter(e.target.value))}
       />
-        <input type="submit" value="Buscar" />
-    </form>
+
   );
 }

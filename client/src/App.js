@@ -9,6 +9,8 @@ import RecipeForm from './components/RecipeForm';
 import Recipes from './components/Recipes';
 import SearchBar from './components/SearchBar';
 import AddRecipe from './components/AddRecipe';
+import NavBar from './components/NavBar';
+import FootBar from './components/FootBar';
 
 // const recipes = 
 
@@ -16,15 +18,13 @@ function App() {
   const dispatch=useDispatch()
   return (
     <div className="App">
-
+    <NavBar></NavBar>
     <Switch>
       <Route exact path = '/'>
-        <h1>Henry Food</h1>
+
         <Landing/>
       </Route>
       <Route path = '/home'>
-        <SearchBar/>
-        <AddRecipe/>
         <Recipes/>
       </Route>
       <Route path = '/recipeform'>
@@ -38,6 +38,7 @@ function App() {
       />
       <NoMatch />
       </Switch>
+      <FootBar></FootBar>
     </div>
   );
 }

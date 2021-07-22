@@ -24,7 +24,7 @@ export default function Pagination({recipes}) {
   return (
     <div className="pagination">
       {pageNumbers.map(number=>          
-              <input className='avgbutton' type="button" key={number} onClick={()=>dispatch(changePage(number))} value={number}>
+              <input type="button" key={number} onClick={()=>dispatch(changePage(number))} value={number}>
           </input>)}
 
     </div>

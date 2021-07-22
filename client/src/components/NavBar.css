@@ -1,0 +1,72 @@
+.navBar {
+    background-color: rgba(41, 41, 41, 0.95);
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;    
+    z-index:3
+  }
+  
+  #navbarUl {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    align-items: center;
+    margin: 5px;
+    position: static;
+    flex-wrap: nowrap;
+  }
+  
+  #navbarUl li {
+    display: flex;
+    flex-direction: row;
+    padding-right: 1%;
+    padding: 3px;
+    flex-wrap: nowrap;
+  }
+  
+  .searchBar {
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    padding-right: 5%;
+  }
+  
+  #navbarUl button {
+    color:rgb(0, 0, 0);
+    font-size: 14px;
+    font-family:"Open Sans", sans-serif;
+    border-radius: 16px;
+    border-width: 0px;
+    background-color: #e5e5e5;
+    border: 1px solid rgba(41, 41, 41, 0.589);
+    height: 25px;
+    white-space: nowrap;
+    align-items: center;
+  }
+  
+  #navbarUl button:hover {
+    background-color: rgb(204, 204, 204);
+    color: black;
+    border-width: 1px;
+    border-color:black
+  }
+
+  #navbarUl button:active {
+    background-color: rgb(246, 246, 246);
+  }
+
+  #logoHenry {
+    margin-right: 20px;
+  }
+
+  .homeText {
+    z-index: 3;
+    font-size: 20px;
+    color: blanchedalmond;
+  }

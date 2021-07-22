@@ -1,0 +1,39 @@
+.recipeDetail {   
+  position: relative;
+  color: rgb(0, 0, 0);
+  border:grey;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 75%;
+  height: auto;
+  margin: 10px;
+  margin-left: auto;
+  margin-right:auto;
+  background-color: rgba(195, 179, 179, 0.589);
+
+}
+
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none; /* no underline */
+}
+.title p {
+  margin-top: 10px;
+  font-family:"Open Sans", sans-serif;
+  font-size: 20px;
+}
+.imgDetail {
+  border: 1px solid rgba(151, 150, 150, 0.95);;
+  border-radius: 25px;
+}
+
+
+
+.cabecera {
+  font-size: 24px;
+}
+
+.thick {
+  font-weight: bold;
+}

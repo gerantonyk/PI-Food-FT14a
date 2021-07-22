@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { changeOrder } from '../actions';
-
+import './Order.css';
 
 export default function Order() {
   //ordenamiento
@@ -24,8 +24,14 @@ export default function Order() {
   }
   return (
     <div className="order">
-       <input onClick={(e)=>handleOrderChange(e)}  value={"score"+ (recipeOrder.order==="score"?recipeOrder.dir:'')} id='score' type = 'button' name='score'></input>
-       <input onClick={(e)=>handleOrderChange(e)}  value={"tile"+ (recipeOrder.order==="title"?recipeOrder.dir:'')} id='title' type = 'button' name='title'></input>
+       <input className = 'avgbutton' onClick={(e)=>handleOrderChange(e)}  value={"score"+ 
+       (recipeOrder.order==="score"?(recipeOrder.dir==='up'?
+       ' ↑':recipeOrder.dir==='down'?' ↓':'' ):'')} 
+       id='score' type = 'button' name='score'></input>
+       <input className = 'avgbutton'  onClick={(e)=>handleOrderChange(e)}  value={"title"+ 
+       (recipeOrder.order==="title"?(recipeOrder.dir==='up'?
+       ' ↑':recipeOrder.dir==='down'?' ↓':'' ):'')} 
+        id='title' type = 'button' name='title'></input>
     </div>
   )
 };

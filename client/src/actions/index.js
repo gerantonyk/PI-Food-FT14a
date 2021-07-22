@@ -32,7 +32,7 @@ export function removeDietFilter(payload) {
 }
 export function getRecipesByName(name) {
   return function(dispatch) {
-    return fetch("http://localhost:3001/recipes?name="+name)
+    return fetch("http://localhost:3001/api/recipes?name="+name)
       .then(response => response.json())
       .then(json => {
         dispatch({ type: "GET_RECIPES", payload: json });
@@ -43,7 +43,7 @@ export function getRecipesByName(name) {
 export function getRecipeDetail(id) {
 
   return function(dispatch) {
-      return fetch("http://localhost:3001/recipes/" + id)
+      return fetch("http://localhost:3001/api/recipes/" + id)
         .then(response => response.json())
         .then(json => {dispatch({ type: "GET_RECIPE_DETAIL", payload: json });
         });
@@ -53,7 +53,7 @@ export function getRecipeDetail(id) {
 export function getDiets() {
   return function(dispatch) {
 
-      return fetch("http://localhost:3001/types/")
+      return fetch("http://localhost:3001/api/types/")
         .then(response => response.json())
         .then(json => {
           dispatch({ type: "GET_DIETS", payload: json });
@@ -64,7 +64,7 @@ export function getDiets() {
 export function postRecipe(recipe) {
   return function(dispatch) {
 
-      return fetch("http://localhost:3001/recipe/", {
+      return fetch("http://localhost:3001/api/recipe/", {
         method: 'post',
         headers: {
             'Accept': '*/*',
@@ -73,7 +73,7 @@ export function postRecipe(recipe) {
         body: JSON.stringify(recipe)
     })
         .then(response => response.json())
-        .then(json => {
+        .then(() => {
           dispatch({ type: "POST_RECIPE", payload:{
             title:'',
             summary:'',

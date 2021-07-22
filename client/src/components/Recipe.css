@@ -1,0 +1,38 @@
+.recipe {   
+  position: relative;
+  color: rgb(0, 0, 0);
+  border:grey;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 75%;
+  height: 400px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right:auto;
+  background-color: rgba(195, 179, 179, 0.589);
+  max-width: 312px;
+}
+
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none; /* no underline */
+}
+.title p {
+  margin-top: 10px;
+  font-family:"Open Sans", sans-serif;
+  font-size: 20px;
+}
+img {
+  width:"80";
+  height:"80" ;
+}
+
+.diets {   
+  display: flex;
+  border:grey;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content:center
+}
+

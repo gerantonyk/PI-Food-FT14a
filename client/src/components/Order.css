@@ -1,0 +1,26 @@
+.avgbutton {
+  color:rgb(0, 0, 0);
+  font-size: 14px;
+  font-family:"Open Sans", sans-serif;
+  border-radius: 16px;
+  border-width: 0px;
+  background-color: #e5e5e5;
+  border: 1px solid rgba(41, 41, 41, 0.589);
+  height: 25px;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.avgbutton:hover {
+  background-color: rgb(204, 204, 204);
+  color: black;
+  border-width: 1px;
+  border-color:black
+}
+
+.avgbutton:active {
+  background-color: rgb(246, 246, 246);
+}
+
+
+

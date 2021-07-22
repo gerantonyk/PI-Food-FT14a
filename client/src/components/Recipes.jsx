@@ -6,6 +6,11 @@ import Pagination from './Pagination';
 import Order from './Order';
 import DietsCombo from './DietsCombo';
 import { Link } from 'react-router-dom';
+import './Recipes.css';
+import SearchBar from './SearchBar';
+import AddRecipe from './AddRecipe';
+import NavBar from './NavBar';
+
 
 export default function Recipes() {
   const dispatch = useDispatch()
@@ -14,10 +19,12 @@ export default function Recipes() {
   const itemsPerPage = useSelector(state => state.itemsPerPage)
   const recipeOrder  = useSelector(state => state.recipeOrder)
   const dietsFilter  = useSelector(state => state.dietsFilter)
+  const recipeNameFilter = useSelector(state => state.recipeNameFilter)
 
   useEffect(()=>{
-    dispatch(getRecipesByName(''))
-  },[dispatch])
+    console.log(recipeNameFilter)
+    dispatch(getRecipesByName(recipeNameFilter))
+  },[recipeNameFilter,dispatch])
   //Filtrando recipes
   var recipes2 = recipes
 
@@ -71,10 +78,16 @@ export default function Recipes() {
   }
 
   return (
-    <div>
-      <DietsCombo onChange={onChangeAddDiet} onClick={onClickRemoveDiet} diets={dietsFilter}/>
+    
+    <div className= 'ere'>
+
+      <div className="filtros">
+      <AddRecipe></AddRecipe>
       <Order/>
-      <div className='recipes'>
+      <DietsCombo onChange={onChangeAddDiet} onClick={onClickRemoveDiet} diets={dietsFilter}/>
+        
+      </div>
+      <div className='content'>
         {currentItems.map((r,id) => 
           <Link key={id} to={`/recipe/${r.id}`}>
             <Recipe
@@ -87,8 +100,9 @@ export default function Recipes() {
           </Link> 
          )}
       </div>
-
-      <Pagination recipes={recipes2}/>
+        <div className="footer">
+          <Pagination recipes={recipes2}/>
+        </div>
     </div>
   )
 };
