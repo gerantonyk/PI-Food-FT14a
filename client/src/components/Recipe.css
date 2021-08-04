@@ -12,6 +12,7 @@
   margin-right:auto;
   background-color: rgba(195, 179, 179, 0.589);
   max-width: 312px;
+  min-width: 280px;
 }
 
 a {
@@ -36,3 +37,6 @@ img {
   justify-content:center
 }
 
+.title {
+  height: 80px;
+}

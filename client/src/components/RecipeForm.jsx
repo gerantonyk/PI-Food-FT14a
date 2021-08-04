@@ -46,6 +46,9 @@ export default function RecipeForm() {
         <label className = 'thick' name= 'healthyness' htmlFor='healthyness'>Nivel de "comida saludable":</label>
         <input  onChange={handleRecipeChange} value={recipeForm.healthyness} id='healthyness' type = 'number' min="0" max="100" placeholder = '' name='healthyness'></input>
         <br></br>
+        <label className = 'thick' name= 'image' htmlFor='image'>URL Imagen:</label>
+        <input  onChange={handleRecipeChange} value={recipeForm.image} id='image' type = 'url' min="0" max="100" placeholder = '' name='image'></input>
+        <br></br>
         <br></br>
   
         <label className = 'thick' name= 'summary' htmlFor='summary'>Resumen del plato:</label><br></br>

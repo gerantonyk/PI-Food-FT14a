@@ -17,31 +17,21 @@ const recipe2 = {  title:"Fideos",
   steps:"pasos",
   diets:["vegan"]
 };
-describe.only('Recipe routes', () => {
+describe('Recipe routes', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
   beforeEach(() => Recipe.sync({ force: true })
     .then(() => Recipe.create(recipe)));
-  describe('GET /api/recipes', () => {
-    it('should get 200', () =>
-      agent.get('/api/recipes').expect(200).timeout(10000)
-    );
-  });
-  describe('GET /api/recipe?name', () => {
-    it('should get 200', () =>
-      agent.get('/api/recipes?name=Milanea').expect(200)
-    );
-  });
   describe('GET api/recipes/:id', () => {
     it('should get 200', () =>
-      agent.get('/api/recipes/47cc1f55-e367-4860-a620-f3306234c556').expect(200)
+      agent.get('/api/recipes/47cc1f55-e367-4860-a620-f3306234c556').expect(200).timeout(10000)
     );
   });
   describe('GET /api/types', () => {
     it('should get 200', () =>
-      agent.get('/api/types').expect(200)
+      agent.get('/api/types').expect(200).timeout(10000)
     );
   });
   describe('POST /api/recipe/', () => {

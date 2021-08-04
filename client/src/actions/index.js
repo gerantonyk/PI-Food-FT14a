@@ -78,6 +78,7 @@ export function postRecipe(recipe) {
             title:'',
             summary:'',
             score:'',
+            image:'',
             healthyness:'',
             steps:'',
             diets:[]

@@ -96,7 +96,7 @@ router.get('/:id', async function(req, res, next){
   if (recipe) return res.json(recipe);
  
   recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`).then(r => r.json())
-console.log('coco',recipe.analyzedInstructions[0].steps)
+
   recipe = {
     id:recipe.id,
     title:recipe.title,

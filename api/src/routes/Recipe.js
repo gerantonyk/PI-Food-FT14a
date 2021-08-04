@@ -11,7 +11,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.post('/', async function(req, res, next){
 
-  var {title, summary, score,healthyness , steps, diets} = req.body
+  var {title, summary, score,image ,healthyness , steps, diets} = req.body
     if (!title) return res.status(400).send({error: 'Debe ingresar un titulo'})
     if (!summary) return res.status(400).send({error: 'Debe ingresar un resumen del plato'})
     //steps = steps.join('|')
@@ -19,6 +19,7 @@ router.post('/', async function(req, res, next){
       title,
       summary, 
       score,
+      image,
       healthyness, 
       steps
     });

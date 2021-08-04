@@ -22,7 +22,7 @@ export default function Recipes() {
   const recipeNameFilter = useSelector(state => state.recipeNameFilter)
 
   useEffect(()=>{
-    console.log(recipeNameFilter)
+
     dispatch(getRecipesByName(recipeNameFilter))
   },[recipeNameFilter,dispatch])
   //Filtrando recipes
